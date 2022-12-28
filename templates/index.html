@@ -1,0 +1,138 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Price</title>
+    <style>
+.form_container {
+max-width:350px;
+width: 100%;
+background: #eaeaea;
+padding:10px 30px;
+border-radius: 5px;
+margin: 0 auto;
+margin-bottom: 10px;
+}
+.b{
+	font-size: 18px;
+	color: black;
+	margin-top: 8px;
+	margin-bottom: 10px;
+	border: 1px;
+}
+.a{
+	padding: 5px;
+	border: solid;
+	border-radius: 5px;
+	font-size: 15px;
+	width:300px;
+	background: rgba(0,0,0,0.4);
+}
+.heading1{
+	color: black;
+	font-size:20px;
+	
+    border: 1px
+}
+.heading{
+	color: black;
+	font-size: 25px;
+	
+    border: 1px
+}
+
+.c{
+	margin-top: 30px;
+}
+.d{
+	padding: 5px;
+	border: solid;
+	border-radius: 5px;
+	font-size: 20px;
+	width: 23%;
+	background: rgba(0,0,0,0.4);
+
+}
+    </style>
+    </head>
+  <body bgcolor="">
+    <div class="form_container">
+    <p align="" class="heading"><b>Used Car Price Calculator
+    </b></p>
+    
+    <div align="">
+      <form action="{{ url_for('predict')}}" method="POST">
+        
+        <div class="b">
+          Car Manufacturing Year<br />
+          <input class="a" type="Number" min="1900" name="Year" required="required" placeholder="Enter Manufacturing Year" />
+        </div>
+
+        <div class="b">
+          Showroom Price (Lakhs)<br />
+          <input
+            type="Number" min="1"
+            name="Present_Price"
+            required="required"
+            placeholder="Enter value in Lakhs"
+            class="a"
+          />
+        </div>
+
+        <div class="b">
+          Kilometers<br />
+          <input
+            type="Number" min="0"
+            name="Kms_Driven"
+            required="required"
+            class="a"
+            placeholder="Enter Kilometers Driven"
+          />
+        </div>
+
+        <div class="b">
+          Number of Previous Owners<br />
+          <select name="Owner" class="a">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+
+        <div class="b">
+          Fuel Type<br />
+          <select name="Fuel_Type_Petrol" class="a">
+            <option value="Petrol">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="CNG">CNG</option>
+          </select>
+        </div>
+
+        <div class="b">
+          Are You Dealer or Individual<br />
+          <select name="Seller_Type_Individual" class="a">
+            <option value="Dealer">Dealer</option>
+            <option value="Individual">Individual</option>
+          </select>
+        </div>
+
+        <div class="b">
+          Transmission Type<br />
+          <select name="Transmission_Manual" class="a">
+            <option value="Manual">Manual</option>
+            <option value="Automatic">Automatic</option>
+          </select>
+        </div>
+    </div>
+        <div class="c" align="">
+          <button type="submit" class="a">Check Selling Price</button>
+        </div>
+      </form>
+  
+    <p align="" class="heading1"><b>{{ prediction_text }}</b></p>
+    <p align="center" class="heading1"><a href="https://car.fortunelogics.com/cars.php"><b>Click to explore cars</b></a></p>
+</div>
+</div>
+  </body>
+</html>
